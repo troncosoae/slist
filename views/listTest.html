@@ -1,0 +1,14 @@
+<% include partials/navbar.html %>
+<div class="container">
+    <% users.forEach(u => { %>
+        <p><%- u.name %></p>
+        <p><%- u.nationality %></p>
+        <p><%- u.age %></p>
+        <p><%- u._id %></p>
+        <% u.items.forEach(i => { %>
+            <%- i %>
+        <% }) %>
+        <br>
+    <% }) %>
+</div>
+<% include partials/footer.html %>
