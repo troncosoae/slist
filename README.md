@@ -31,7 +31,7 @@ npm start
 ### For hot reload
 
 ``` bash
-npm run startdev
+npm run devstart
 ```
 
 ### Mongodb connection
