@@ -1,0 +1,14 @@
+<form action="/addToList" method="POST">
+    <div class="form-row">
+        <input type="hidden" name="_id" value=<%- _id %>>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Name..." name="name">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" placeholder="0" name="quantity">
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color: var(--main-color); border-color: var(--main-color);">
+            Add
+        </button>
+    </div>
+</form>

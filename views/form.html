@@ -1,8 +1,13 @@
-<% include partials/navbar.html %>
-<form action="/form" method="POST">
-    <input type="text" name="name">
-    <input type="number" name="age">
-    <input type="text" name="nationality">
-    <input type="submit" value="Submit">
-</form>
+<div class="container" style="min-height: 100vh;">
+    <% include partials/navbar.html %>
+    <br>
+    <% include partials/inputListForm2.html %>
+    <br>
+    <form action="/form" method="POST">
+        <input type="text" name="name">
+        <input type="number" name="age">
+        <input type="text" name="nationality">
+        <input type="submit" value="Submit">
+    </form>
+</div>
 <% include partials/footer.html %>

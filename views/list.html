@@ -1,3 +1,13 @@
-<%- name %>
-<%- listId %>
-<%- items %>
+<div class="container" style="min-height: 100vh;">
+    <% include partials/inputListForm.html %>
+    list
+    <%- _id %>
+    <%- users %>
+    <%- items %>
+    <% items.forEach(item => { %>
+        <p><%- item.name %></p>
+        <p><%- item.quantity %></p>
+        <p><%- item.checked %></p>
+        <br>
+    <% }) %>
+</div>
