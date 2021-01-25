@@ -19,8 +19,9 @@
                 <!-- <td><%- item.checked %></td> -->
                 <% if (item.checked) { %>
                     <td><input type="checkbox" checked></td>
+                    
                 <% } else { %>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" onchange="toggleCheckbox(this)"></td>
                 <% } %>
                 <td><%- item.name %></td>
                 <td><%- item.quantity %></td>
@@ -30,3 +31,10 @@
         </tbody>
     </table>
 </div>
+<script>
+    function toggleCheckbox(element)
+    {
+        // element.checked = !element.checked;
+        window.alert('he')
+    }
+</script>

@@ -92,11 +92,15 @@ router
 
     console.log('list...')
     console.log(list)
+    let clicked = 0
 
     await ctx.render('list', {
       items: [...list.items],
       users: [...list.users],
       _id: list._id,
+      onCheck: () => {
+        console.log('h')
+      }
     })
   })
   .post('/addToList', async (ctx, next) => {
@@ -139,4 +143,4 @@ router
     await ctx.redirect(`/list/${_id}`)
   })
 
-  module.exports = router;
+module.exports = router;
