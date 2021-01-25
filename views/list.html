@@ -1,13 +1,32 @@
-<div class="container" style="min-height: 100vh;">
-    <% include partials/inputListForm.html %>
-    list
-    <%- _id %>
-    <%- users %>
-    <%- items %>
-    <% items.forEach(item => { %>
-        <p><%- item.name %></p>
-        <p><%- item.quantity %></p>
-        <p><%- item.checked %></p>
-        <br>
-    <% }) %>
+<% include partials/inputListForm.html %>
+<div class="container-fluid" style="min-height: 100vh;">
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Status</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+        <% let i = 0 %>
+        <% items.forEach(item => { %>
+            <tr>
+                <th scope="row"><%- i + 1 %></th>
+                <!-- <td><%- item.checked %></td> -->
+                <% if (item.checked) { %>
+                    <td><input type="checkbox" checked></td>
+                <% } else { %>
+                    <td><input type="checkbox"></td>
+                <% } %>
+                <td><%- item.name %></td>
+                <td><%- item.quantity %></td>
+            </tr>
+            <% i = i + 1 %>
+        <% }) %>
+        </tbody>
+    </table>
 </div>
