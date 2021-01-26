@@ -49,7 +49,6 @@ router
     let user = ctx.request.body.user
     if (!mongodb.ObjectID.isValid(_id)) {
       await ctx.redirect('/', {})
-      ctx.get()
       return
     }
     query = {
@@ -141,6 +140,11 @@ router
     await List.findOneAndUpdate(query, list, (err, res) => {})
 
     await ctx.redirect(`/list/${_id}`)
+  })
+  .post('/sendChecked', async (ctx, next) => {
+    console.log("sendChecked[POST]: ctx.request.body")
+    console.log(ctx.request.body)
+    ctx.redirect('/', {})
   })
 
 module.exports = router;
