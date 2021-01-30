@@ -4,13 +4,18 @@ const mongodb = require('mongodb');
 
 const UserTest = require('./db/UserTest');
 const List = require('./db/List');
+const Items = require('./db/Items');
 
 const router = new Router();
 
+item_id = 0
+
 router
   .get('/', async (ctx, next) => {
+    console.log(Items.getAll())
     console.log("/[GET]: ctx.request.body")
     console.log(ctx.request.body)
+    console
     await ctx.render('home', {})
   })
   .get('/newList', async (ctx, next) => {
@@ -24,13 +29,12 @@ router
     let user = ctx.request.body.user
     let newList = new List({
         users: [user],
-        items: [
-          {
-            name: 'milk',
-            quantity: 3,
-            checked: false,
-          },
-        ],
+        items: [{
+          _id: 0,
+          name: "milk",
+          quantity: 3,
+          checked: false
+        }],
     });
     newList.save((err, res) => {
       if (err) {
@@ -107,7 +111,9 @@ router
     console.log(ctx.request.body)
     let _id = ctx.request.body._id
     console.log(`_id: ${_id}`)
+    item_id = item_id + 1
     item = {
+      _id: item_id,
       name: ctx.request.body.name,
       quantity: ctx.request.body.quantity,
       checked: false,
@@ -144,6 +150,16 @@ router
   .post('/sendChecked', async (ctx, next) => {
     console.log("sendChecked[POST]: ctx.request.body")
     console.log(ctx.request.body)
+    console.log(Object.keys(ctx.request.body))
+
+    Object.keys(ctx.request.body).forEach((key, index) => {
+      console.log(key)
+    })
+
+    // for (let i in ctx.request.body) {
+    //   console.log(i)
+    // }
+
     ctx.redirect('/', {})
   })
 

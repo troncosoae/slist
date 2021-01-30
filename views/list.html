@@ -1,7 +1,7 @@
 <% include partials/inputListForm.html %>
 <div class="container-fluid" style="min-height: 100vh;">
     <br>
-    <form action="/getList" method="POST">
+    <form action="/sendChecked" method="POST">
         <table class="table">
             <thead>
             <tr>
@@ -17,12 +17,10 @@
             <% items.forEach(item => { %>
                 <tr>
                     <th scope="row"><%- i + 1 %></th>
-                    <!-- <td><%- item.checked %></td> -->
                     <% if (item.checked) { %>
-                        <td><input type="checkbox" name="checkbox<%- i %>" checked></td>
-                        
+                        <td><input type="checkbox" name="<%- i._id %>" checked></td>
                     <% } else { %>
-                        <td><input type="checkbox" name="checkbox<%- i %>"></td>
+                        <td><input type="checkbox" name="<%- i._id %>"></td>
                     <% } %>
                     <td><%- item.name %></td>
                     <td><%- item.quantity %></td>
@@ -31,7 +29,6 @@
             <% }) %>
             </tbody>
         </table>
-        <input type="hidden" name="hiden" value="32">
         <button type="submit" class="btn btn-primary" style="background-color: var(--main-color); border-color: var(--main-color);">
             Update
         </button>

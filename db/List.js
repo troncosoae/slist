@@ -1,12 +1,17 @@
-const db = require('./../config')
+const client = require('./config')
+const Item = require('./Item')
 
-let listSchema = db.Schema({
-    code: String,
-    name: String,
-    users: Array,
-    items: Array
-});
+// let List = {
+//     getRows: () => 
+// }
 
-let List = db.model("list", listSchema);
+// let listSchema = db.Schema({
+//     code: String,
+//     name: String,
+//     users: Array,
+//     items: Array
+// });
 
-module.exports = List;
+// let List = db.model("list", listSchema);
+
+// module.exports = List;
