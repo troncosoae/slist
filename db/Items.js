@@ -1,4 +1,4 @@
-const client = require('./config')
+const { query } = require('./config')
 
 let Items = {
     getAll: () => {

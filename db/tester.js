@@ -1,5 +1,6 @@
-const db = require('./index');
+const db = require('./config');
 
-console.log(db)
-
-db.query('select * from items WHERE $1', ['TRUE'], () => {console.log('s')})
+// let items = 3
+db.query('select * from items', [], (err, res) => {
+    console.log(res)
+})

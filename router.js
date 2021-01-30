@@ -2,9 +2,10 @@ const Router = require('koa-router');
 const mongoose = require('mongoose');
 const mongodb = require('mongodb');
 
-const UserTest = require('./db/UserTest');
-const List = require('./db/List');
-const Items = require('./db/Items');
+// const UserTest = require('./db/UserTest');
+// const List = require('./db/List');
+// const Items = require('./db/Items');
+const db = require('./db/config');
 
 const router = new Router();
 
@@ -12,7 +13,6 @@ item_id = 0
 
 router
   .get('/', async (ctx, next) => {
-    console.log(Items.getAll())
     console.log("/[GET]: ctx.request.body")
     console.log(ctx.request.body)
     console
@@ -161,6 +161,18 @@ router
     // }
 
     ctx.redirect('/', {})
+  })
+  .get('/db', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      const result = await client.query('SELECT * FROM test_table');
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/db', results );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
   })
 
 module.exports = router;
